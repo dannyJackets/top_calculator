@@ -1,8 +1,104 @@
+:root{
+    --BUTTON_GAP: 5px;
+}
+
+button{
+    font-size: 24px;
+    padding: 5px;
+    width: 45px;
+    height: 45px;
+}
+
 #calculator{
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+#content{
     display: flex;
     flex-direction: column;
     background-color: gray;
     border-radius: 10px;
     padding: 15px;
-    gap: 5px;
+    gap: var(--BUTTON_GAP);
+    max-width: 300px;
+    max-height: 400px;
+}
+
+#screen{
+    background-color: greenyellow;
+    font-size: 36px;
+    text-align: right;
+    padding: 5px;
+}
+
+#row1{
+    display:flex;
+    gap: var(--BUTTON_GAP);
+}
+
+#clear{
+    flex: 1 0 auto;
+}
+
+#backspace{
+    flex: 1 0 auto;
+}
+
+#main_buttons{
+    display: flex;
+    gap: var(--BUTTON_GAP);
+}
+
+#left_buttons{
+    display: flex;
+    flex-direction: column;
+    gap: var(--BUTTON_GAP);
+    flex: 1 0 auto;
+}
+
+#row2{
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--BUTTON_GAP);
+}
+
+#row3{
+    display: flex;
+    gap: var(--BUTTON_GAP);
+}
+
+#row4{
+    display: flex;
+    gap: var(--BUTTON_GAP);
+}
+
+#row5{
+    display: flex;
+    gap: var(--BUTTON_GAP);
+}
+
+#row6{
+    display: flex;
+    gap: var(--BUTTON_GAP);
+}
+
+#zero{
+    flex: 2 0 auto;
+}
+
+#right_buttons{
+    display: flex;
+    flex-direction: column;
+    gap: var(--BUTTON_GAP);
+    flex: 1 0 auto;
+}
+
+#add{
+    flex: 2 0 auto;
+}
+
+#equal{
+    flex: 2 0 auto;
 }

@@ -1,22 +1,15 @@
-function operate(operator, a, b){
-    operator === "+" ? add(a, b) :
-    operator === "-" ? subract(a, b) : 
-    operator === "*" ? multiply(a, b) :
-    operator === "/" ? divide(a, b) : null;
+const buttonWrapper = document.getElementById('content');
+buttonWrapper.addEventListener('click', function(e) { buttonId(e) });
+
+function buttonId(e){   
+    if(e.target.nodeName !== 'BUTTON'){
+        return;
+    }
+    else{
+        updateDisplay(e.target.id);
+    }
 }
 
-function add(a, b){
-    return(a + b);
-}
-
-function subtract(a, b){
-    return(a - b);
-}
-
-function multiply(a, b){
-    return(a * b);
-}
-
-function divide(a, b){
-    return(a / b);
+function updateDisplay(button){
+    document.getElementById("screen").innerHTML = button;
 }
