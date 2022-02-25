@@ -1,12 +1,12 @@
 :root{
-    --BUTTON_GAP: 5px;
+    --BUTTON_SIZE: 45px;
 }
 
 button{
     font-size: 24px;
     padding: 5px;
-    width: 45px;
-    height: 45px;
+    width: var(--BUTTON_SIZE);
+    height: var(--BUTTON_SIZE);
 }
 
 #calculator{
@@ -21,84 +21,120 @@ button{
     background-color: gray;
     border-radius: 10px;
     padding: 15px;
-    gap: var(--BUTTON_GAP);
     max-width: 300px;
     max-height: 400px;
+    align-items: center;
 }
 
 #screen{
+    display: flex;
+    flex-wrap: nowrap;
     background-color: greenyellow;
     font-size: 36px;
-    text-align: right;
-    padding: 5px;
+    min-width: 195px;
+    min-height: 60px;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-#row1{
-    display:flex;
-    gap: var(--BUTTON_GAP);
+#display{
+    margin: 5px;
+}
+
+#calc_buttons{
+    display: grid;
+    margin-top: 5px;
+    column-gap: 5px;
+    row-gap: 5px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+        "clear clear backspace backspace"
+        ". divide multiply subtract"
+        "seven eight nine add"
+        "four five six add"
+        "one two three equal"
+        "zero zero point equal";
 }
 
 #clear{
-    flex: 1 0 auto;
+    grid-area: clear;
+    justify-self: stretch;
+    width: 2 * var(--BUTTON_SIZE);
 }
 
 #backspace{
-    flex: 1 0 auto;
+    grid-area: backspace;
+    justify-self: stretch;
+    width: 2 * var(--BUTTON_SIZE);
 }
 
-#main_buttons{
-    display: flex;
-    gap: var(--BUTTON_GAP);
+#divide{
+    grid-area: divide;
 }
 
-#left_buttons{
-    display: flex;
-    flex-direction: column;
-    gap: var(--BUTTON_GAP);
-    flex: 1 0 auto;
+#multiply{
+    grid-area: multiply;
 }
 
-#row2{
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--BUTTON_GAP);
+#subtract{
+    grid-area: subtract;
 }
 
-#row3{
-    display: flex;
-    gap: var(--BUTTON_GAP);
+#seven{
+    grid-area: seven;
 }
 
-#row4{
-    display: flex;
-    gap: var(--BUTTON_GAP);
+#eight{
+    grid-area: eight;
 }
 
-#row5{
-    display: flex;
-    gap: var(--BUTTON_GAP);
-}
-
-#row6{
-    display: flex;
-    gap: var(--BUTTON_GAP);
-}
-
-#zero{
-    flex: 2 0 auto;
-}
-
-#right_buttons{
-    display: flex;
-    flex-direction: column;
-    gap: var(--BUTTON_GAP);
-    flex: 1 0 auto;
+#nine{
+    grid-area: nine;
 }
 
 #add{
-    flex: 2 0 auto;
+    grid-area: add;
+    justify-self: stretch;
+    height: 2 * var(--BUTTON_SIZE);
+}
+
+#four{
+    grid-area: four;
+}
+
+#five{
+    grid-area: five;
+}
+
+#six{
+    grid-area: six;
+}
+
+#one{
+    grid-area: one;
+}
+
+#two{
+    grid-area: two;
+}
+
+#three{
+    grid-area: three;
 }
 
 #equal{
-    flex: 2 0 auto;
+    grid-area: equal;
+    justify-self: stretch;
+    height: 2 * var(--BUTTON_SIZE);
+}
+
+#zero{
+    grid-area: zero;
+    justify-self: stretch;
+    width: 2 * var(--BUTTON_SIZE);
+}
+
+#point{
+    grid-area: point;
 }
