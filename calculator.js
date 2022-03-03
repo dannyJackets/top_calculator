@@ -62,23 +62,13 @@
 
     function backspace(){   //need to revisit for erasing operands with decimals, better strategy is to delete end of string....
         if(EXPRESSION.opd2 !== ''){
-            if(Math.floor(EXPRESSION.opd2 / 10) === 0){
-                EXPRESSION.opd2 = '';
-            }
-            else{
-                EXPRESSION.opd2 = Math.floor(EXPRESSION.opd2 / 10);
-            }
+            EXPRESSION.opd2 = EXPRESSION.opd2.slice(0, -1);
         }
         else if(EXPRESSION.op !== ''){
             EXPRESSION.op = '';
         }
         else if(EXPRESSION.opd1 !== ''){
-            if(Math.floor(EXPRESSION.opd1 / 10) === 0){
-                EXPRESSION.opd1 = '';
-            }
-            else{
-                EXPRESSION.opd1 = Math.floor(EXPRESSION.opd1 / 10);
-            }
+            EXPRESSION.opd1 = EXPRESSION.opd1.slice(0, -1);
         }
     }
 
@@ -88,9 +78,13 @@
                 EXPRESSION.opd1 = button;       
             }
         }
+        else if(EXPRESSION.opd2 === '' && EXPRESSION.op !== '' && button === '-'){
+            EXPRESSION.opd2 = button;
+        }
         else if(EXPRESSION.opd2 === ''){
             EXPRESSION.op = button;
         }
+        console.log(EXPRESSION.opd1 + EXPRESSION.op + EXPRESSION.opd2);
     }
 
     function operands(button){
