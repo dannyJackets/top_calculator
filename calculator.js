@@ -163,3 +163,5 @@
     }
 
 }());
+
+//forgot to add rounding to decimal solutions and keyboard support
