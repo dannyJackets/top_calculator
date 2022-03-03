@@ -1,11 +1,12 @@
 (function(){
+    const ERROR = 'ERROR';
     var EXPRESSION = {
         opd1: '',
         op: '',
         opd2: ''
     };
 
-    const ERROR = 'ERROR';
+    
 
     let buttonWrapper = document.getElementById('content');
     buttonWrapper.addEventListener('click', function(e) { buttonId(e) });
@@ -60,7 +61,7 @@
         Object.keys(EXPRESSION).forEach(i => EXPRESSION[i] = ''); 
     }
 
-    function backspace(){   //need to revisit for erasing operands with decimals, better strategy is to delete end of string....
+    function backspace(){  
         if(EXPRESSION.opd2 !== ''){
             EXPRESSION.opd2 = EXPRESSION.opd2.slice(0, -1);
         }
@@ -72,19 +73,23 @@
         }
     }
 
-    function operator(button){
+    function operator(button){ 
         if(EXPRESSION.opd1 === ''){
             if(button === '-'){
                 EXPRESSION.opd1 = button;       
             }
         }
-        else if(EXPRESSION.opd2 === '' && EXPRESSION.op !== '' && button === '-'){
-            EXPRESSION.opd2 = button;
-        }
-        else if(EXPRESSION.opd2 === ''){
+        else if(EXPRESSION.op === ''){
             EXPRESSION.op = button;
         }
-        console.log(EXPRESSION.opd1 + EXPRESSION.op + EXPRESSION.opd2);
+        else if(EXPRESSION.opd2 === ''){
+            if(button === '-' && EXPRESSION.op !== '-'){
+                EXPRESSION.opd2 = button;
+            }
+            else{
+                EXPRESSION.op = button;
+            }
+        }
     }
 
     function operands(button){
