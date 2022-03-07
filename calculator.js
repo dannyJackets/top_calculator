@@ -10,6 +10,8 @@
 
     let buttonWrapper = document.getElementById('content');
     buttonWrapper.addEventListener('click', function(e) { buttonId(e) });
+    document.addEventListener('keypress', function(e){ keypress(e) });
+
 
     function buttonId(e){   
         if(e.target.nodeName !== 'BUTTON'){
@@ -20,6 +22,37 @@
                 clear();
             }
             updateDisplay(e.target.innerHTML);
+        }
+    }
+
+    function keypress(e){
+        console.log(e); 
+        switch(e.key){
+        case '/':
+            updateDisplay('\u00f7');
+            break;
+        case '*':
+            updateDisplay('\u00d7');
+            break;
+        case '-':
+        case '+':
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '.':    
+        case '=':
+            updateDisplay(e.key);
+            break;
+        case 'Enter':
+            updateDisplay('=');
+            break;
         }
     }
 
@@ -138,23 +171,23 @@
         }
         else{
             clear();
-            EXPRESSION.opd1 = (a / b).toString();
+            EXPRESSION.opd1 = (a / b) * 10 % 1 ? (a / b).toFixed(2).toString() : (a / b).toString();
         }
     }
 
     function multiply(a, b){
         clear();
-        EXPRESSION.opd1 = (a * b).toString();
+        EXPRESSION.opd1 = (a * b) * 10 % 1 ? (a * b).toFixed(2).toString() : (a * b).toString();
     }
 
     function subtract(a, b){
         clear();
-        EXPRESSION.opd1 = (a - b).toString();
+        EXPRESSION.opd1 = (a - b) * 10 % 1 ? (a - b).toFixed(2).toString() : (a - b).toString();
     }
 
     function add(a, b){
         clear();
-        EXPRESSION.opd1 = (a + b).toString();
+        EXPRESSION.opd1 = (a + b) * 10 % 1 ? (a + b).toFixed(2).toString() : (a + b).toString();
     }
 
     function error(){ 
@@ -163,5 +196,3 @@
     }
 
 }());
-
-//forgot to add rounding to decimal solutions and keyboard support
